@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_clone/main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -65,20 +66,58 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          Column(
-                            children: [
-                              Image.asset(
-                                'assets/album4.jpg',
-                                width: 120,
-                                height: 120,
-                              ),
-                              SizedBox(height: 10),
-                              Text("Beast Mode"),
-                            ],
+                          AlbumCard(
+                            label: "Best Mode",
+                            image: AssetImage("assets/album7.jpg"),
+                          ),
+                          SizedBox(width: 16),
+                          AlbumCard(
+                            label: "Mot6ivation Mix",
+                            image: AssetImage("assets/album2.jpg"),
+                          ),
+                          SizedBox(width: 16),
+                          AlbumCard(
+                            label: "Top 50-Global",
+                            image: AssetImage("assets/top50.jpg"),
+                          ),
+                          SizedBox(width: 16),
+                          AlbumCard(
+                            label: "Power Gaming",
+                            image: AssetImage("assets/album1.jpg"),
+                          ),
+                          SizedBox(width: 16),
+                          AlbumCard(
+                            label: "Top songs - Global",
+                            image: AssetImage("assets/album9.jpg"),
                           ),
                         ],
                       ),
-                    )
+                    ),
+                    SizedBox(height: 32),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            "Good evening",
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          SizedBox(height: 16),
+
+                          Row(
+                            children: [
+                              Container(
+                                child: Row(
+                                  
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    
                   ],
                 ),
               ),
@@ -86,6 +125,28 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class AlbumCard extends StatelessWidget {
+  const AlbumCard({
+    Key key,
+    this.image,
+    this.label,
+  }) : super(key: key);
+
+  @override
+  final ImageProvider image;
+  final String label;
+
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image(image: image, width: 120, height: 120),
+        SizedBox(height: 10),
+        Text(label),
+      ],
     );
   }
 }
